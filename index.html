@@ -3,197 +3,209 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi Inicio Personalizado</title>
+    <title>Inicio de SocGeri</title>
     <style>
         /* --- CONFIGURACIÓN GENERAL --- */
         :root {
-            --bg-color: #0a0a0c; /* Color de fondo por si no carga la imagen */
+            --bg-color: #1a1b1e;
             --text-color: #ffffff;
-            /* Colores del efecto cristal */
-            --card-bg: rgba(255, 255, 255, 0.06); 
+            --card-bg: rgba(255, 255, 255, 0.05); 
             --card-border: rgba(255, 255, 255, 0.1);
-            --card-blur: blur(10px);
-            /* Color de acento (para hovers) */
-            --accent-color: #00bcd4; 
+            --accent-color: #e63946; /* Color de acento para hovers */
+            --glass-blur: blur(15px);
         }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
 
         body {
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            background-color: var(--bg-color);
-            /* AQUÍ SE USA TU IMAGEN */
-            background-image: url('space-bg.jpg'); 
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed; /* La imagen no se mueve al hacer scroll */
+            font-family: 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-color);
             color: var(--text-color);
             min-height: 100vh;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
-            padding: 20px;
+            padding: 40px;
+        }
+
+        /* --- CABECERA Y BUSCADOR --- */
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            width: 100%;
+            max-width: 600px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            font-weight: 300;
+        }
+
+        .search-bar {
+            width: 100%;
+            padding: 15px 25px;
+            border-radius: 50px;
+            border: 1px solid var(--card-border);
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+        }
+
+        .search-bar:focus {
+            outline: none;
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.3);
+            box-shadow: 0 0 15px rgba(255,255,255,0.1);
         }
 
         /* --- CONTENEDOR PRINCIPAL --- */
-        .main-wrapper {
+        .container {
             width: 100%;
             max-width: 1200px;
             display: flex;
             flex-direction: column;
-            gap: 30px; /* Espacio entre bloque superior e inferior */
+            gap: 30px;
         }
 
-        /* --- SECCIONES (Top y Bottom) --- */
-        .folders, .bottom {
-            display: flex;
-            flex-wrap: wrap; /* Se ajusta a pantallas pequeñas */
-            gap: 20px; /* Espacio entre tarjetas */
-            justify-content: center;
-        }
-
-        /* --- DISEÑO DE TARJETA (FOLDER) - ESTILO CRISTAL --- */
-        .folder {
-            background: var(--card-bg);
-            backdrop-filter: var(--card-blur);
-            -webkit-backdrop-filter: var(--card-blur); /* Compatibilidad Safari */
-            border: 1px solid var(--card-border);
-            border-radius: 16px;
-            padding: 20px;
-            flex: 1 1 250px; /* Ancho flexible, mínimo 250px */
-            max-width: 350px;
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-            transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
-        }
-
-        /* Efecto al pasar el ratón por la tarjeta */
-        .folder:hover {
-            transform: translateY(-5px); /* Sube un poco */
-            border-color: rgba(255, 255, 255, 0.3);
-            box-shadow: 0 8px 32px 0 rgba(0, 188, 212, 0.2); /* Brillo del color de acento */
-        }
-
-        /* --- TÍTULOS --- */
-        .folder h2 {
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin-bottom: 15px;
-            padding-bottom: 8px;
-            border-bottom: 1px solid var(--card-border);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        /* --- ENLACES --- */
-        .folder a {
-            display: block; /* Un enlace por línea */
-            color: #d1d1d1;
-            text-decoration: none;
-            padding: 8px 10px;
-            border-radius: 8px;
-            transition: background 0.2s ease, color 0.2s ease;
-            font-size: 0.95rem;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        /* Efecto al pasar el ratón por el enlace */
-        .folder a:hover {
-            background: rgba(255, 255, 255, 0.1);
-            color: var(--accent-color);
-            padding-left: 15px; /* Pequeño desplazamiento a la derecha */
-        }
-
-        /* --- COLUMNA DOBLE (Sección Watch) --- */
-        .double-column {
+        .section-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr; /* Dos columnas iguales */
-            gap: 5px 10px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
         }
 
-        /* Respetar que ocupe todo el ancho en double-column */
-        .double-column a {
+        /* --- TARJETAS PROFESIONALES (GLASS) --- */
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            padding: 25px;
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            border-color: rgba(255,255,255,0.2);
+        }
+
+        .card h2 {
+            font-size: 1.3rem;
+            font-weight: 400;
+            margin-bottom: 20px;
+            opacity: 0.8;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* --- ENLACES Y LOGOS --- */
+        .link-item {
             display: flex;
+            align-items: center;
+            gap: 15px;
+            color: #ccc;
+            text-decoration: none;
+            padding: 10px;
+            border-radius: 10px;
+            transition: background 0.2s, color 0.2s;
         }
 
-        /* --- RESPONSIVE PARA MÓVILES --- */
-        @media (max-width: 600px) {
-            .folder {
-                flex: 1 1 100%; /* Una tarjeta por línea en móviles */
-            }
-            .double-column {
-                grid-template-columns: 1fr; /* Una columna en Watch en móviles */
-            }
+        .link-item:hover {
+            background: rgba(255,255,255,0.08);
+            color: white;
+        }
+
+        /* Contenedor de logo genérico (puedes reemplazarlos por imágenes reales) */
+        .logo-placeholder {
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        /* --- LOGOS ESPECÍFICOS (Reemplazar con URLs reales) --- */
+        /* Nota: Para un acabado profesional real, deberás subir logos (como 'netflix.svg') 
+           a tu repositorio y cambiar 'background-image' a 'url(netflix.svg)'. 
+           He usado colores de marca como solución temporal. */
+        .logo { width: 30px; height: 30px; border-radius: 6px; background-size: contain; background-repeat: no-repeat; background-position: center; }
+        
+        .logo-netflix { background-color: #e50914; }
+        .logo-youtube { background-color: #ff0000; }
+        .logo-movistar { background-color: #00a9e0; }
+        .logo-twitch { background-color: #9146ff; }
+        .logo-prime { background-color: #00a8e1; }
+        .logo-chatgpt { background-color: #10a37f; border-radius: 50%; }
+        .logo-gemini { background-color: #4285f4; border-radius: 50%; }
+        .logo-urbanity { background-color: #555; } /* Reemplazar por un logo de ciudad */
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            h1 { font-size: 2rem; }
+            .card { padding: 20px; }
         }
     </style>
 </head>
 <body>
 
-<div class="main-wrapper">
-    <div class="folders">
-        <div class="folder">
-            <h2>🙋🏽‍♂️ SocGeri</h2>
-            <a href="https://mail.google.com/mail/u/0/?ogbl#inbox">📧 Gmail</a>
-            <a href="https://drive.google.com/drive/u/0/my-drive">📎 Drive</a>
+<header>
+    <h1>Bienvenido Sr. SocGeri</h1>
+    <form action="https://www.google.com/search" method="get">
+        <input type="text" name="q" class="search-bar" placeholder="Buscar en Google..." autofocus>
+    </form>
+</header>
+
+<div class="container">
+    <div class="section-grid">
+        <div class="card">
+            <h2>SocGeri</h2>
+            <a href="https://mail.google.com/mail/u/0/" class="link-item"><div class="logo-placeholder">📧</div> Gmail</a>
+            <a href="https://drive.google.com/drive/u/0/" class="link-item"><div class="logo-placeholder">📎</div> Drive</a>
         </div>
         
-        <div class="folder">
-            <h2>🎓 PenDrive</h2>
-            <a href="https://mail.google.com/mail/u/3/#inbox">📧 Gmail</a>
-            <a href="https://drive.google.com/drive/u/3/my-drive">📎 Drive</a>
+        <div class="card">
+            <h2>PenDrive</h2>
+            <a href="https://mail.google.com/mail/u/3/" class="link-item"><div class="logo-placeholder">📧</div> Gmail</a>
+            <a href="https://drive.google.com/drive/u/3/" class="link-item"><div class="logo-placeholder">📎</div> Drive</a>
         </div>
         
-        <div class="folder">
-            <h2>👨🏾‍💻 Castilla</h2>
-            <a href="https://mail.google.com/mail/u/2/#inbox">📧 Gmail</a>
-            <a href="https://drive.google.com/drive/u/2/my-drive">📎 Drive</a>
+        <div class="card">
+            <h2>Castilla</h2>
+            <a href="https://mail.google.com/mail/u/2/" class="link-item"><div class="logo-placeholder">📧</div> Gmail</a>
+            <a href="https://drive.google.com/drive/u/2/" class="link-item"><div class="logo-placeholder">📎</div> Drive</a>
         </div>
         
-        <div class="folder">
-            <h2>🤖 Urbanity</h2>
-            <a href="https://mail.google.com/mail/u/1/#inbox">📧 Gmail</a>
-            <a href="https://drive.google.com/drive/u/1/my-drive">📎 Drive</a>
+        <div class="card">
+            <h2>Urbanity</h2>
+            <a href="https://mail.google.com/mail/u/1/" class="link-item"><div class="logo-urbanity logo"></div> Gmail</a>
+            <a href="https://drive.google.com/drive/u/1/" class="link-item"><div class="logo-urbanity logo"></div> Drive</a>
         </div>
         
-        <div class="folder">
-            <h2>🌹 AGALLA</h2>
-            <a href="https://mail.google.com/mail/u/4/#inbox">📧 Gmail</a>
-            <a href="https://drive.google.com/drive/u/4/my-drive">📎 Drive</a> 
+        <div class="card">
+            <h2>AGALLA</h2>
+            <a href="https://mail.google.com/mail/u/4/" class="link-item"><div class="logo-placeholder">📧</div> Gmail</a>
+            <a href="https://drive.google.com/drive/u/4/" class="link-item"><div class="logo-placeholder">📎</div> Drive</a>
         </div>
     </div>
 
-    <div class="bottom">
-        <div class="folder">
-            <h2>🍿 Watch</h2>
-            <div class="double-column">
-                <a href="https://www.netflix.com/browse">🎬 Netflix</a>
-                <a href="https://www.youtube.com/">▶️ YouTube</a>
-                <a href="https://ver.movistarplus.es">📺 Movistar+</a>
-                <a href="https://www.twitch.tv/">🟪 Twitch</a>
-                <a href="https://www.primevideo.com/region/eu/storefront">▶️ Prime Video</a>
-            </div>
+    <div class="section-grid">
+        <div class="card">
+            <h2>Watch</h2>
+            <a href="https://www.netflix.com/" class="link-item"><div class="logo-netflix logo"></div> Netflix</a>
+            <a href="https://www.youtube.com/" class="link-item"><div class="logo-youtube logo"></div> YouTube</a>
+            <a href="https://ver.movistarplus.es/" class="link-item"><div class="logo-movistar logo"></div> Movistar+</a>
+            <a href="https://www.twitch.tv/" class="link-item"><div class="logo-twitch logo"></div> Twitch</a>
+            <a href="https://www.primevideo.com/" class="link-item"><div class="logo-prime logo"></div> Prime Video</a>
         </div>
 
-        <div class="folder">
-            <h2>🤖 ChatGPT</h2>
-            <a href="https://chatgpt.com/">🧠 chat.openai.com</a>
-        </div>
-
-        <div class="folder">
-            <h2>📚 Studies</h2>
-            <a href="https://castillacarretero.wixsite.com/gdcaco">🌐 GdCaco</a>
-            <a href="https://universitats.gencat.cat/ca/master-formacio-professorat/">📚 Máster</a>
-        </div>
-
-        <div class="folder">
-            <h2>🗓️ Calendario</h2>
-            <a href="https://calendar.google.com/calendar/u/1/r/month?pli=1">🗓️ Ver calendario</a>
+        <div class="card">
+            <h2>IA (Inteligencia Artificial)</h2>
+            <a href="https://chatgpt.com/" class="link-item"><div class="logo-chatgpt logo"></div> ChatGPT</a>
+            <a href="https://gemini.google.com/" class="link-item"><div class="logo-gemini logo"></div> Gemini</a>
         </div>
     </div>
 </div>
