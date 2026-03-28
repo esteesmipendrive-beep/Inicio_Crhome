@@ -11,7 +11,7 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    cursor: default;
+    cursor: default; /* Cursor normal por defecto */
 }
 
 body {
@@ -27,7 +27,7 @@ body {
     flex-direction: column;
     align-items: center;
     padding: 40px 20px;
-    overflow-x: hidden; /* Evita scrolls raros durante la animación */
+    overflow-x: hidden;
 }
 
 /* --- ANIMACIÓN DE ENTRADA --- */
@@ -41,29 +41,6 @@ body {
         transform: translateY(0);
     }
 }
-
-.card {
-    background: var(--card-bg);
-    border: 1px solid var(--card-border);
-    border-radius: 20px;
-    padding: 20px;
-    backdrop-filter: var(--glass-blur);
-    -webkit-backdrop-filter: var(--glass-blur);
-    transition: all 0.3s ease;
-    
-    /* Aplicamos la animación */
-    opacity: 0; 
-    animation: fadeInUp 0.8s ease-out forwards;
-}
-
-/* Efecto cascada: cada tarjeta tarda un poquito más que la anterior */
-.section-top .card:nth-child(1) { animation-delay: 0.1s; }
-.section-top .card:nth-child(2) { animation-delay: 0.2s; }
-.section-top .card:nth-child(3) { animation-delay: 0.3s; }
-.section-top .card:nth-child(4) { animation-delay: 0.4s; }
-.section-top .card:nth-child(5) { animation-delay: 0.5s; }
-.section-bottom .card:nth-child(1) { animation-delay: 0.7s; }
-.section-bottom .card:nth-child(2) { animation-delay: 0.9s; }
 
 /* --- CABECERA Y BUSCADOR --- */
 header {
@@ -101,12 +78,13 @@ h1 {
 /* --- CONTENEDOR PRINCIPAL --- */
 .container {
     width: 100%;
-    max-width: 1300px;
+    max-width: 1400px; /* Más ancho para separar más las tarjetas inferiores */
     display: flex;
     flex-direction: column;
-    gap: 150px;
+    gap: 150px; /* Mantiene la separación vertical para ver el centro */
 }
 
+/* --- FILAS --- */
 .section-top {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -115,11 +93,34 @@ h1 {
 
 .section-bottom {
     display: flex;
-    justify-content: space-between;
-    gap: 20px;
+    justify-content: space-between; /* Empuja las tarjetas a los extremos exactos */
+    align-items: flex-start;
+    width: 100%;
 }
 
-/* --- TARJETAS HOVER --- */
+/* --- TARJETAS GLOBALES --- */
+.card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 20px;
+    padding: 20px;
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    transition: all 0.3s ease;
+    
+    /* Animación cascada */
+    opacity: 0; 
+    animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.section-top .card:nth-child(1) { animation-delay: 0.1s; }
+.section-top .card:nth-child(2) { animation-delay: 0.2s; }
+.section-top .card:nth-child(3) { animation-delay: 0.3s; }
+.section-top .card:nth-child(4) { animation-delay: 0.4s; }
+.section-top .card:nth-child(5) { animation-delay: 0.5s; }
+.section-bottom .card:nth-child(1) { animation-delay: 0.7s; }
+.section-bottom .card:nth-child(2) { animation-delay: 0.9s; }
+
 .card:hover {
     transform: translateY(-5px);
     background: rgba(255, 255, 255, 0.1);
@@ -195,9 +196,9 @@ h1 {
     cursor: url('https://cdn-icons-png.flaticon.com/32/2926/2926331.png'), pointer; 
 }
 
-/* --- DISEÑO WATCH E IA --- */
+/* --- DISEÑO WATCH E IA (GRANDES Y A LOS LADOS) --- */
 .big-card {
-    min-width: 380px;
+    width: 400px; /* Ancho fijo para evitar que invadan el centro de la pantalla */
     padding: 30px;
 }
 
@@ -216,8 +217,15 @@ h1 {
 .link-hacha:hover    { box-shadow: 0 0 20px rgba(192, 192, 192, 0.5); }
 .link-chrome:hover   { box-shadow: 0 0 20px rgba(0, 210, 255, 0.5); }
 
-@media (max-width: 900px) {
-    .section-bottom { flex-direction: column; align-items: center; }
-    .container { gap: 40px; }
-    .big-card { min-width: 100%; }
+/* --- RESPONSIVE --- */
+@media (max-width: 1000px) {
+    .section-bottom { 
+        flex-direction: column; 
+        align-items: center; 
+    }
+    .big-card { 
+        width: 100%; 
+        max-width: 500px; 
+    }
+    .container { gap: 60px; }
 }
