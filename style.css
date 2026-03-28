@@ -20,7 +20,7 @@ body {
     background-image: url('space-bg.jpg'); 
     background-size: cover;
     /* AJUSTE DEL SOL: Modifica el 45% (ej: 40% o 50%) para mover el centro horizontal */
-    background-position: 50% center; 
+    background-position: 70% center; 
     background-attachment: fixed;
     color: var(--text-color);
     min-height: 100vh;
