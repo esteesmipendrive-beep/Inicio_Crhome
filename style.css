@@ -19,7 +19,6 @@ body {
     background-color: var(--bg-color);
     background-image: url('space-bg.jpg'); 
     background-size: cover;
-    /* AJUSTE DEL SOL: Movido al 55% */
     background-position: 55% center; 
     background-attachment: fixed;
     color: var(--text-color);
@@ -76,7 +75,6 @@ h1 {
     max-width: 1400px; 
     display: flex;
     flex-direction: column;
-    /* REDUCCIÓN DE ESPACIO: De 150px a 90px para acercar la fila inferior */
     gap: 90px;
 }
 
@@ -185,22 +183,34 @@ h1 {
 .card-cyclezen .link-item:hover { cursor: url('https://cdn-icons-png.flaticon.com/32/3198/3198334.png'), pointer; }
 .card-agalla .link-item:hover { cursor: url('https://cdn-icons-png.flaticon.com/32/2926/2926331.png'), pointer; }
 
-/* --- DISEÑO WATCH E IA --- */
+/* --- DISEÑO WATCH E IA (TAMAÑOS CALIBRADOS) --- */
 .big-card {
-    /* Ensanchado de 400px a 440px para que quepan bien las dos columnas */
     width: 440px; 
-    padding: 30px;
+    padding: 25px; /* Reducido un poco el borde exterior para compactar */
 }
 
-.big-card h2 { font-size: 1.5rem; }
-.big-card .link-item { font-size: 1.2rem; padding: 12px; }
-.big-card .logo { width: 30px; height: 30px; }
+.big-card h2 { 
+    font-size: 1.5rem; 
+    margin-bottom: 20px;
+}
 
-/* Grid a dos columnas general para las tarjetas inferiores */
-.grid-2col {
+/* Textos más juntos verticalmente y logos más grandes */
+.big-card .link-item { 
+    font-size: 1.25rem; 
+    padding: 6px 10px; /* Menos relleno arriba y abajo para agrupar las filas */
+    gap: 15px; /* Un poco más de espacio entre el logo y el texto */
+}
+
+.big-card .logo { 
+    width: 35px; /* Logos notablemente más grandes */
+    height: 35px; 
+}
+
+/* Cuadrículas más compactas verticalmente */
+.watch-grid, .grid-2col {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 15px 10px;
+    gap: 8px 15px; /* 8px de salto de línea, 15px de separación entre columnas */
 }
 
 /* --- AURAS (COLORES AL HOVER) --- */
@@ -219,5 +229,5 @@ h1 {
     .section-bottom { flex-direction: column; align-items: center; }
     .big-card { width: 100%; max-width: 500px; }
     .container { gap: 60px; }
-    .grid-2col { grid-template-columns: 1fr; }
+    .watch-grid, .grid-2col { grid-template-columns: 1fr; gap: 10px; }
 }
