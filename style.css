@@ -1,0 +1,190 @@
+/* --- CONFIGURACIÓN GENERAL --- */
+:root {
+    --bg-color: #0a0a0c;
+    --text-color: #ffffff;
+    --card-bg: rgba(255, 255, 255, 0.06);
+    --card-border: rgba(255, 255, 255, 0.1);
+    --glass-blur: blur(15px);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    cursor: default;
+}
+
+body {
+    font-family: 'Segoe UI', Roboto, sans-serif;
+    background-color: var(--bg-color);
+    background-image: url('space-bg.jpg'); 
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: var(--text-color);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
+}
+
+/* --- CABECERA Y BUSCADOR --- */
+header {
+    text-align: center;
+    margin-bottom: 50px;
+    width: 100%;
+    max-width: 650px;
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 25px;
+    font-weight: 300;
+}
+
+.search-bar {
+    width: 100%;
+    padding: 16px 28px;
+    border-radius: 50px;
+    border: 1px solid var(--card-border);
+    background: rgba(0, 0, 0, 0.4);
+    color: white;
+    font-size: 1.1rem;
+    transition: all 0.3s;
+    cursor: text;
+}
+
+.search-bar:focus {
+    outline: none;
+    background: rgba(0, 0, 0, 0.6);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+}
+
+/* --- CONTENEDOR PRINCIPAL --- */
+.container {
+    width: 100%;
+    max-width: 1300px;
+    display: flex;
+    flex-direction: column;
+    gap: 150px;
+}
+
+.section-top {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 15px;
+}
+
+.section-bottom {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+/* --- TARJETAS --- */
+.card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 20px;
+    padding: 20px;
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    transition: all 0.3s ease;
+}
+
+.card h2 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.8);
+}
+
+.profile-pic {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid rgba(255,255,255,0.3);
+}
+
+/* --- ENLACES --- */
+.link-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #ccc;
+    text-decoration: none;
+    padding: 8px 12px;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.link-item:hover {
+    background: rgba(255,255,255,0.1);
+    color: #fff;
+    transform: scale(1.02);
+}
+
+/* --- LOGOS --- */
+.logo { 
+    width: 22px; 
+    height: 22px; 
+    background-size: contain; 
+    background-repeat: no-repeat; 
+    background-position: center;
+}
+
+.logo-gmail     { background-image: url('Gmail.png'); }
+.logo-drive     { background-image: url('Drive.png'); }
+.logo-netflix   { background-image: url('Netflix.png'); }
+.logo-youtube   { background-image: url('Youtube.png'); }
+.logo-movistar  { background-image: url('Movistar.png'); }
+.logo-twitch    { background-image: url('Twitch.png'); }
+.logo-prime     { background-image: url('PrimeVideo.png'); }
+.logo-chatgpt   { background-image: url('ChatGPT.png'); }
+.logo-gemini    { background-image: url('Gemini.png'); }
+.logo-cyclezen  { background-image: url('CycleZen19.png'); }
+.logo-agalla    { background-image: url('Agalla.png'); }
+.logo-hacha     { background-image: url('hacha.png'); }
+
+/* --- CURSORES ESPECIALES --- */
+.card-cyclezen .link-item:hover { 
+    cursor: url('https://cdn-icons-png.flaticon.com/32/3198/3198334.png'), pointer; 
+}
+.card-agalla .link-item:hover { 
+    cursor: url('https://cdn-icons-png.flaticon.com/32/2926/2926331.png'), pointer; 
+}
+
+/* --- DISEÑO WATCH E IA --- */
+.big-card {
+    min-width: 380px;
+    padding: 30px;
+}
+
+.big-card h2 { font-size: 1.5rem; }
+.big-card .link-item { font-size: 1.2rem; padding: 12px; }
+.big-card .logo { width: 30px; height: 30px; }
+
+/* --- AURAS (COLORES AL HOVER) --- */
+.link-netflix:hover  { box-shadow: 0 0 20px rgba(229, 9, 20, 0.6); }
+.link-movistar:hover { box-shadow: 0 0 20px rgba(100, 100, 100, 0.6); border: 1px solid #555; }
+.link-prime:hover    { box-shadow: 0 0 20px rgba(0, 168, 225, 0.6); }
+.link-youtube:hover  { box-shadow: 0 0 20px rgba(255, 255, 255, 0.4); }
+.link-twitch:hover   { box-shadow: 0 0 20px rgba(145, 70, 255, 0.6); }
+.link-chatgpt:hover  { box-shadow: 0 0 20px rgba(16, 163, 127, 0.6); }
+.link-gemini:hover   { box-shadow: 0 0 20px rgba(255, 215, 0, 0.6); }
+.link-hacha:hover    { box-shadow: 0 0 20px rgba(192, 192, 192, 0.5); }
+.link-chrome:hover   { box-shadow: 0 0 20px rgba(0, 210, 255, 0.5); }
+
+@media (max-width: 900px) {
+    .section-bottom { flex-direction: column; align-items: center; }
+    .container { gap: 40px; }
+    .big-card { min-width: 100%; }
+}
