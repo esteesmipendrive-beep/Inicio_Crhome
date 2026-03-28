@@ -7,146 +7,164 @@
     <style>
         /* --- CONFIGURACIÓN GENERAL --- */
         :root {
-            --bg-color: #1a1b1e;
+            --bg-color: #0a0a0c;
             --text-color: #ffffff;
-            --card-bg: rgba(255, 255, 255, 0.05); 
+            --card-bg: rgba(255, 255, 255, 0.07); 
             --card-border: rgba(255, 255, 255, 0.1);
-            --accent-color: #e63946; /* Color de acento para hovers */
-            --glass-blur: blur(15px);
+            --accent-color: #00d2ff; 
+            --glass-blur: blur(12px);
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
 
         body {
             font-family: 'Segoe UI', Roboto, sans-serif;
-            background: var(--bg-color);
+            background-color: var(--bg-color);
+            background-image: url('space-bg.jpg'); 
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
             color: var(--text-color);
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 40px;
+            padding: 40px 20px;
         }
 
         /* --- CABECERA Y BUSCADOR --- */
         header {
             text-align: center;
-            margin-bottom: 40px;
+            margin-bottom: 50px;
             width: 100%;
-            max-width: 600px;
+            max-width: 650px;
         }
 
         h1 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
+            font-size: 2.2rem;
+            margin-bottom: 25px;
             font-weight: 300;
+            letter-spacing: 1px;
+            text-shadow: 0 4px 10px rgba(0,0,0,0.5);
         }
 
         .search-bar {
             width: 100%;
-            padding: 15px 25px;
+            padding: 16px 28px;
             border-radius: 50px;
             border: 1px solid var(--card-border);
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(5px);
             color: white;
             font-size: 1.1rem;
-            transition: all 0.3s;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
         }
 
         .search-bar:focus {
             outline: none;
-            background: rgba(255, 255, 255, 0.15);
-            border-color: rgba(255, 255, 255, 0.3);
-            box-shadow: 0 0 15px rgba(255,255,255,0.1);
+            background: rgba(0, 0, 0, 0.6);
+            border-color: var(--accent-color);
+            box-shadow: 0 0 20px rgba(0, 210, 255, 0.2);
         }
 
         /* --- CONTENEDOR PRINCIPAL --- */
         .container {
             width: 100%;
-            max-width: 1200px;
+            max-width: 1300px;
             display: flex;
             flex-direction: column;
-            gap: 30px;
+            gap: 40px;
         }
 
         .section-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
             gap: 20px;
+            justify-content: center;
         }
 
-        /* --- TARJETAS PROFESIONALES (GLASS) --- */
+        /* --- TARJETAS (FOLDERS) --- */
         .card {
             background: var(--card-bg);
             border: 1px solid var(--card-border);
-            border-radius: 20px;
-            padding: 25px;
+            border-radius: 18px;
+            padding: 22px;
             backdrop-filter: var(--glass-blur);
             -webkit-backdrop-filter: var(--glass-blur);
-            transition: transform 0.3s, box-shadow 0.3s;
+            transition: all 0.3s ease;
         }
 
         .card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-            border-color: rgba(255,255,255,0.2);
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.2);
         }
 
         .card h2 {
-            font-size: 1.3rem;
-            font-weight: 400;
-            margin-bottom: 20px;
-            opacity: 0.8;
-            letter-spacing: 1px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 18px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.9);
             text-transform: uppercase;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
         /* --- ENLACES Y LOGOS --- */
         .link-item {
             display: flex;
             align-items: center;
-            gap: 15px;
-            color: #ccc;
+            gap: 12px;
+            color: #d1d1d1;
             text-decoration: none;
             padding: 10px;
             border-radius: 10px;
-            transition: background 0.2s, color 0.2s;
+            transition: all 0.2s ease;
+            font-size: 0.95rem;
         }
 
         .link-item:hover {
-            background: rgba(255,255,255,0.08);
-            color: white;
+            background: rgba(255,255,255,0.1);
+            color: var(--accent-color);
+            padding-left: 15px;
         }
 
-        /* Contenedor de logo genérico (puedes reemplazarlos por imágenes reales) */
-        .logo-placeholder {
-            width: 24px;
-            height: 24px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
+        /* CONFIGURACIÓN DE LOGOS SUBIDOS */
+        .logo { 
+            width: 22px; 
+            height: 22px; 
+            background-size: contain; 
+            background-repeat: no-repeat; 
+            background-position: center;
         }
 
-        /* --- LOGOS ESPECÍFICOS (Reemplazar con URLs reales) --- */
-        /* Nota: Para un acabado profesional real, deberás subir logos (como 'netflix.svg') 
-           a tu repositorio y cambiar 'background-image' a 'url(netflix.svg)'. 
-           He usado colores de marca como solución temporal. */
-        .logo { width: 30px; height: 30px; border-radius: 6px; background-size: contain; background-repeat: no-repeat; background-position: center; }
-        
-        .logo-netflix { background-color: #e50914; }
-        .logo-youtube { background-color: #ff0000; }
-        .logo-movistar { background-color: #00a9e0; }
-        .logo-twitch { background-color: #9146ff; }
-        .logo-prime { background-color: #00a8e1; }
-        .logo-chatgpt { background-color: #10a37f; border-radius: 50%; }
-        .logo-gemini { background-color: #4285f4; border-radius: 50%; }
-        .logo-urbanity { background-color: #555; } /* Reemplazar por un logo de ciudad */
+        /* Mapeo exacto de tus nombres de archivo */
+        .logo-gmail     { background-image: url('Gmail.png'); }
+        .logo-drive     { background-image: url('Drive.png'); }
+        .logo-netflix   { background-image: url('Netflix.png'); }
+        .logo-youtube   { background-image: url('Youtube.png'); }
+        .logo-movistar  { background-image: url('Movistar.png'); }
+        .logo-twitch    { background-image: url('Twitch.png'); }
+        .logo-prime     { background-image: url('PrimeVideo.png'); }
+        .logo-chatgpt   { background-image: url('ChatGPT.png'); }
+        .logo-gemini    { background-image: url('Gemini.png'); }
+        .logo-agalla    { background-image: url('Agalla.png'); }
+        .logo-cyclezen  { background-image: url('CycleZen19.png'); }
 
-        /* --- RESPONSIVE --- */
-        @media (max-width: 768px) {
-            h1 { font-size: 2rem; }
-            .card { padding: 20px; }
+        /* Ajuste para la sección Watch en dos columnas */
+        .watch-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5px;
+        }
+
+        @media (max-width: 600px) {
+            .watch-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -163,49 +181,51 @@
     <div class="section-grid">
         <div class="card">
             <h2>SocGeri</h2>
-            <a href="https://mail.google.com/mail/u/0/" class="link-item"><div class="logo-placeholder">📧</div> Gmail</a>
-            <a href="https://drive.google.com/drive/u/0/" class="link-item"><div class="logo-placeholder">📎</div> Drive</a>
+            <a href="https://mail.google.com/mail/u/0/" class="link-item"><div class="logo logo-gmail"></div> Gmail</a>
+            <a href="https://drive.google.com/drive/u/0/" class="link-item"><div class="logo logo-drive"></div> Drive</a>
         </div>
         
         <div class="card">
             <h2>PenDrive</h2>
-            <a href="https://mail.google.com/mail/u/3/" class="link-item"><div class="logo-placeholder">📧</div> Gmail</a>
-            <a href="https://drive.google.com/drive/u/3/" class="link-item"><div class="logo-placeholder">📎</div> Drive</a>
+            <a href="https://mail.google.com/mail/u/3/" class="link-item"><div class="logo logo-gmail"></div> Gmail</a>
+            <a href="https://drive.google.com/drive/u/3/" class="link-item"><div class="logo logo-drive"></div> Drive</a>
         </div>
         
         <div class="card">
             <h2>Castilla</h2>
-            <a href="https://mail.google.com/mail/u/2/" class="link-item"><div class="logo-placeholder">📧</div> Gmail</a>
-            <a href="https://drive.google.com/drive/u/2/" class="link-item"><div class="logo-placeholder">📎</div> Drive</a>
+            <a href="https://mail.google.com/mail/u/2/" class="link-item"><div class="logo logo-gmail"></div> Gmail</a>
+            <a href="https://drive.google.com/drive/u/2/" class="link-item"><div class="logo logo-drive"></div> Drive</a>
         </div>
         
         <div class="card">
-            <h2>Urbanity</h2>
-            <a href="https://mail.google.com/mail/u/1/" class="link-item"><div class="logo-urbanity logo"></div> Gmail</a>
-            <a href="https://drive.google.com/drive/u/1/" class="link-item"><div class="logo-urbanity logo"></div> Drive</a>
+            <h2>CycleZen 19</h2>
+            <a href="https://mail.google.com/mail/u/1/" class="link-item"><div class="logo logo-cyclezen"></div> Gmail</a>
+            <a href="https://drive.google.com/drive/u/1/" class="link-item"><div class="logo logo-cyclezen"></div> Drive</a>
         </div>
         
         <div class="card">
             <h2>AGALLA</h2>
-            <a href="https://mail.google.com/mail/u/4/" class="link-item"><div class="logo-placeholder">📧</div> Gmail</a>
-            <a href="https://drive.google.com/drive/u/4/" class="link-item"><div class="logo-placeholder">📎</div> Drive</a>
+            <a href="https://mail.google.com/mail/u/4/" class="link-item"><div class="logo logo-agalla"></div> Gmail</a>
+            <a href="https://drive.google.com/drive/u/4/" class="link-item"><div class="logo logo-drive"></div> Drive</a>
         </div>
     </div>
 
-    <div class="section-grid">
-        <div class="card">
+    <div class="section-grid" style="justify-content: center;">
+        <div class="card" style="max-width: 450px;">
             <h2>Watch</h2>
-            <a href="https://www.netflix.com/" class="link-item"><div class="logo-netflix logo"></div> Netflix</a>
-            <a href="https://www.youtube.com/" class="link-item"><div class="logo-youtube logo"></div> YouTube</a>
-            <a href="https://ver.movistarplus.es/" class="link-item"><div class="logo-movistar logo"></div> Movistar+</a>
-            <a href="https://www.twitch.tv/" class="link-item"><div class="logo-twitch logo"></div> Twitch</a>
-            <a href="https://www.primevideo.com/" class="link-item"><div class="logo-prime logo"></div> Prime Video</a>
+            <div class="watch-grid">
+                <a href="https://www.netflix.com/" class="link-item"><div class="logo logo-netflix"></div> Netflix</a>
+                <a href="https://www.youtube.com/" class="link-item"><div class="logo logo-youtube"></div> YouTube</a>
+                <a href="https://ver.movistarplus.es/" class="link-item"><div class="logo logo-movistar"></div> Movistar+</a>
+                <a href="https://www.twitch.tv/" class="link-item"><div class="logo logo-twitch"></div> Twitch</a>
+                <a href="https://www.primevideo.com/" class="link-item"><div class="logo logo-prime"></div> Prime Video</a>
+            </div>
         </div>
 
-        <div class="card">
-            <h2>IA (Inteligencia Artificial)</h2>
-            <a href="https://chatgpt.com/" class="link-item"><div class="logo-chatgpt logo"></div> ChatGPT</a>
-            <a href="https://gemini.google.com/" class="link-item"><div class="logo-gemini logo"></div> Gemini</a>
+        <div class="card" style="max-width: 350px;">
+            <h2>IA</h2>
+            <a href="https://chatgpt.com/" class="link-item"><div class="logo logo-chatgpt"></div> ChatGPT</a>
+            <a href="https://gemini.google.com/" class="link-item"><div class="logo logo-gemini"></div> Gemini</a>
         </div>
     </div>
 </div>
