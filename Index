@@ -1,0 +1,146 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Inicio de Gerard</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-image: url('file:///C:/Users/socge/Desktop/Miscelanea/space-bg.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 100vh;
+      padding: 2rem;
+      box-sizing: border-box;
+    }
+    h1 {
+      text-align: center;
+      font-size: 2.2rem;
+      margin-bottom: 2rem;
+    }
+    .search {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 3rem;
+    }
+    .search input {
+      width: 60%;
+      padding: 0.8rem;
+      font-size: 1.1rem;
+      border-radius: 10px;
+      border: none;
+    }
+    .folders {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+    }
+    .folder {
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 1rem;
+      border-radius: 10px;
+      min-width: 160px;
+      max-width: 220px;
+    }
+    .folder h2 {
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+      text-align: center;
+    }
+    .folder a {
+      display: block;
+      color: #ffffff;
+      text-decoration: none;
+      margin: 0.4rem 0;
+      font-size: 0.95rem;
+      text-align: center;
+    }
+    .bottom {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+      margin-top: 3rem;
+    }
+    .double-column {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.5rem 1rem;
+      justify-items: center;
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <h1>Inicio de Gerard</h1>
+    <div class="search">
+      <input type="text" placeholder="Buscar en Google..." onkeydown="if(event.key==='Enter'){window.location='https://www.google.com/search?q='+this.value}" />
+    </div>
+    <div class="folders">
+      <div class="folder">
+        <h2>🙋🏽‍♂️ SocGeri</h2>
+        <a href="https://mail.google.com/mail/u/0/?ogbl#inbox">📧 Gmail</a>
+        <a href="https://drive.google.com/drive/u/0/my-drive">📎 Drive</a>
+      </div>
+      <div class="folder">
+        <h2>🎓 PenDrive</h2>
+        <a href="https://mail.google.com/mail/u/3/#inbox">📧 Gmail</a>
+        <a href="https://drive.google.com/drive/u/3/my-drive">📎 Drive</a>
+      </div>
+      <div class="folder">
+        <h2>👨🏾‍💻 Castilla</h2>
+        <a href="https://mail.google.com/mail/u/2/#inbox">📧 Gmail</a>
+        <a href="https://drive.google.com/drive/u/2/my-drive">📎 Drive</a>
+      </div>
+      <div class="folder">
+        <h2>🤖 Urbanity</h2>
+        <a href="https://mail.google.com/mail/u/1/#inbox">📧 Gmail</a>
+        <a href="https://drive.google.com/drive/u/1/my-drive">📎 Drive</a>
+      </div>
+      <div class="folder">
+        <h2>🌹 AGALLA</h2>
+        <a href="https://mail.google.com/mail/u/4/#inbox">📧 Gmail</a>
+        <a href="https://mail.google.com/mail/u/4/#inbox">📎 Drive</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="bottom">
+    <div class="folder">
+      <h2>🍿 Watch</h2>
+      <div class="double-column">
+        <a href="https://www.netflix.com/browse">🎬 Netflix</a>
+        <a href="https://www.youtube.com/">▶️ YouTube</a>
+        <a href="https://ver.movistarplus.es">📺 Movistar+</a>
+        <a href="https://www.twitch.tv/">🟪 Twitch</a>
+        <a href="https://www.primevideo.com/region/eu/storefront">▶️ Prime Video</a>
+      </div>
+    </div>
+
+    <div class="folder">
+      <h2>🤖 ChatGPT</h2>
+      <a href="https://chatgpt.com/">🧠 chat.openai.com</a>
+    </div>
+
+    <div class="folder">
+      <h2>📚 Studies</h2>
+      <a href="https://castillacarretero.wixsite.com/gdcaco">🌐 GdCaco</a>
+      <a href="https://universitats.gencat.cat/ca/master-formacio-professorat/">📚 Máster</a>
+    </div>
+
+    <div class="folder">
+      <h2>🗓️ Calendario</h2>
+      <a href="https://calendar.google.com/calendar/u/1/r/month?pli=1">🗓️ Ver calendario</a>
+    </div>
+  </div>
+</body>
+</html>
