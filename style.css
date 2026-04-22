@@ -80,7 +80,7 @@ h1 {
 
 .section-top {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 15px;
 }
 
@@ -104,13 +104,15 @@ h1 {
     animation: fadeInUp 0.8s ease-out forwards;
 }
 
+/* Ajustes de animación para incluir la 6ª tarjeta */
 .section-top .card:nth-child(1) { animation-delay: 0.1s; }
 .section-top .card:nth-child(2) { animation-delay: 0.2s; }
 .section-top .card:nth-child(3) { animation-delay: 0.3s; }
 .section-top .card:nth-child(4) { animation-delay: 0.4s; }
 .section-top .card:nth-child(5) { animation-delay: 0.5s; }
-.section-bottom .card:nth-child(1) { animation-delay: 0.7s; }
-.section-bottom .card:nth-child(2) { animation-delay: 0.9s; }
+.section-top .card:nth-child(6) { animation-delay: 0.6s; }
+.section-bottom .card:nth-child(1) { animation-delay: 0.8s; }
+.section-bottom .card:nth-child(2) { animation-delay: 1.0s; }
 
 .card:hover {
     transform: translateY(-5px);
@@ -172,9 +174,8 @@ h1 {
 .logo-movistar  { background-image: url('Movistar.png'); }
 .logo-prime     { background-image: url('PrimeVideo.png'); }
 .logo-gemini    { background-image: url('Gemini.png'); }
-
-/* Corrección mayúscula Hacha */
-.logo-hacha     { background-image: url('Hacha.png'); } 
+.logo-hacha     { background-image: url('Hacha.png'); }
+.logo-zoho      { background-image: url('Zoho.png'); }
 
 /* Ampliación de logos con mucho margen interno */
 .logo-youtube   { background-image: url('Youtube.png'); transform: scale(1.2); }
@@ -225,6 +226,7 @@ h1 {
 .link-gemini:hover   { box-shadow: 0 0 20px rgba(255, 215, 0, 0.6); }
 .link-hacha:hover    { box-shadow: 0 0 20px rgba(192, 192, 192, 0.5); }
 .link-chrome:hover   { box-shadow: 0 0 20px rgba(0, 210, 255, 0.5); }
+.link-item:hover .logo-zoho { filter: drop-shadow(0 0 8px #0073e6); }
 
 /* --- RESPONSIVE --- */
 @media (max-width: 1000px) {
